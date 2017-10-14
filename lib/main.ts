@@ -1,7 +1,10 @@
 import Araneo, {IAraneoOptions} from './araneo';
 
-const araneo = (obj: object, options?: IAraneoOptions): Araneo => {
+const obj = (obj: object, options?: IAraneoOptions): Araneo => {
   return new Araneo(obj, options);
 };
 
-export default araneo;
+export default obj
+
+module.exports = obj;
+module.exports.default = obj;

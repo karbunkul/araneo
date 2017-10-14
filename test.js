@@ -1,4 +1,4 @@
-import araneo from './lib/main';
+const araneo = require('./dist/lib/main');
 
 const obj = {
   toc: {
@@ -18,5 +18,4 @@ console.log(chapter.custom((data) => {
     value: data['author'] = 'Alexander Pushkin',
     status: true,
   };
-}).value);
-console.log(chapter.isString.error);
+}).status);
