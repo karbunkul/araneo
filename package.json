@@ -1,0 +1,20 @@
+{
+  "name": "araneo",
+  "version": "0.0.1",
+  "description": "Helper for validation and getting value by path",
+  "main": "dist/main.js",
+  "scripts": {
+    "start": "nodemon $NODE_DEBUG_OPTION --exec ts-node index.ts",
+    "test": "npm run compile && mocha ./tests/**/*.spec.js --compilers js:babel-register",
+    "clean": "rimraf dist",
+    "compile": "npm run clean && tsc"
+  },
+  "author": "Pokhodyun Alexander",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^8.0.34",
+    "nodemon": "^1.12.1",
+    "ts-node": "^3.3.0",
+    "typescript": "^2.5.3"
+  }
+}
