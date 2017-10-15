@@ -1,5 +1,5 @@
-import {isBoolean} from "util";
-import Node from "./node";
+import {isBoolean, isUndefined} from 'util';
+import Node from './node';
 
 export interface IAraneoOptions {
   cache?: boolean;
@@ -12,6 +12,11 @@ export default class Araneo {
   private _cache: boolean = true;
   private _caches: object = {};
 
+  /**
+   * Constructor
+   * @param {Object} obj
+   * @param {IAraneoOptions} options
+   */
   constructor(obj: object, options?: IAraneoOptions) {
     this.source = obj;
     if (options && options.hasOwnProperty('cache') && isBoolean(options.cache))
@@ -69,7 +74,8 @@ export default class Araneo {
    * @param {string} path
    * @returns {Node}
    */
-  public node(path: string): Node {
+  public node(path?: string): Node {
+    if (isUndefined(path)) return new Node(this.source);
     this.path = path;
     if (this._cache && this.caches.hasOwnProperty(path))
       return new Node(this.caches[path]);

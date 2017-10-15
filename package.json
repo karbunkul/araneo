@@ -5,7 +5,7 @@
   "main": "dist/main.js",
   "scripts": {
     "start": "nodemon $NODE_DEBUG_OPTION --exec ts-node index.ts",
-    "test": "npm run compile && mocha ./tests/**/*.spec.js --compilers js:babel-register",
+    "test": "mocha -r ts-node/register tests/**/*.spec.ts",
     "clean": "rimraf dist",
     "compile": "npm run clean && tsc"
   },
@@ -13,9 +13,13 @@
   "license": "MIT",
   "devDependencies": {
     "@types/node": "^8.0.34",
+    "@types/chai": "^4.0.4",
+    "@types/mocha": "^2.2.43",
     "nodemon": "^1.12.1",
     "ts-node": "^3.3.0",
-    "typescript": "^2.5.3"
+    "typescript": "^2.5.3",
+    "chai": "^4.1.2",
+    "mocha": "^3.5.3"
   },
   "repository": {
     "type": "git",

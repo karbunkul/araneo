@@ -17,7 +17,6 @@ export default class Node {
   }
 
   public isString() {
-    console.log('method isString');
     if (this.status) {
       if (!isString(this._value)) {
         this.message('isString check failed');
