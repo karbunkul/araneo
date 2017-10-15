@@ -1,68 +1,60 @@
 import {isBoolean, isNumber, isObject, isString} from "util";
 
+export interface IAraneoNodeError {
+  message: string;
+  context: any;
+}
+
 export default class Node {
   private _source: any;
   private _status: boolean = true;
   private _value: any;
-  private _error: string;
+  private _error: IAraneoNodeError;
 
   constructor(data: any) {
     this._source = data;
-    this._value = {...data};
+    this._value = isObject(data) ? {...data} : data;
   }
 
-  /**
-   * Custom for validation
-   * @param {Function} callback
-   * @returns {Node}
-   */
-  public custom(callback:Function) {
-    Promise.resolve(callback(this._value)).then(res => {
-      // if res object
-      if (isObject(res) && res.hasOwnProperty('value') && res.hasOwnProperty('status')) {
-        this._value = res.value;
-        this._status = res.status;
-      }
-      // if single value
-      if (isBoolean(res)) {
-        this._status = res;
-      }else {
-        this._value = res;
-      }
-    });
-    return this;
-  }
-
-  get isString() {
-
+  public isString() {
+    console.log('method isString');
     if (this.status) {
       if (!isString(this._value)) {
-        this.message('iString check failed')
+        this.message('isString check failed');
       }
     }
-
-    (this._status)
-      ? this._status = isString(this._value)
-      : false;
     return this
   }
 
-  get isNumber() {
-    this._value = isNumber(this._value);
+  public isNumber() {
+    console.log('method isNumber');
+    if (this.status) {
+      if (!isNumber(this._value)) {
+        this.message('isNumber check failed');
+      }
+    }
     return this;
   }
 
-  get isExist() {
-    this._value = !!(this._value);
+  public isExist() {
+    if (this.status) {
+      if (!(!!this._value)) {
+        this.message('isExist check failed');
+      }
+    }
     return this;
+  }
+
+  private message(message: string) {
+    this._status = false;
+    this._error = {
+      message: message,
+      context: this.value,
+    };
   }
 
   get error() {
     return this._error;
-  }
-
-  private message(message: string) {
-    this._error = `${message} context: ${JSON.stringify(this.value)}`
   }
 
   get status(): boolean {

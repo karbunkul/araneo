@@ -1,22 +1,21 @@
 import araneo from './lib/main';
+import * as util from "util";
 
 const obj = {
   toc: {
     chapter: {
+      'sub-chapter': {
+        title: 'Sub-chapter title'
+      },
       title: 'Chapter 1',
-      sub: []
     },
-    depth: 3,
+    depth: 2,
   }
 };
 
-const safe = araneo(obj);
-const chapter = safe.node('toc.chapter');
+const log = (message: any) =>
+  console.log(`${util.inspect(message)}\n-----`);
 
-console.log(chapter.custom((data) => {
-  return {
-    value: data['author'] = 'Alexander Pushkin',
-    status: true,
-  };
-}).value);
-console.log(chapter.isString.error);
+const safe = araneo(obj);
+const title = safe.node('toc.chapter.sub-chapter.title');
+log(title.isString().status);

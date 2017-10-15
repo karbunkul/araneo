@@ -24,7 +24,7 @@ export default class Araneo {
    * @returns {boolean}
    */
   public isExist(path: string): boolean {
-    return this.node(path).isExist.value;
+    return this.node(path).isExist().value;
   }
 
   /**
