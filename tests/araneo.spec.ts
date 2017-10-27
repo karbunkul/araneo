@@ -9,7 +9,7 @@ const obj = {
       'sub-chapter': {
         title: 'Sub-chapter title'
       },
-      title: 'Chapter 1',
+      title: ' Chapter 1 ',
     },
     depth: 2,
   }
@@ -40,5 +40,19 @@ describe('Araneo init', () => {
 
   it('check node value is not exist', () => {
     expect(safe.node('toc.chapter.sub-chapter.tit').isExist().status).to.equal(false);
+  });
+
+  it('trim space in string', () => {
+    expect(safe.node('toc.chapter.title').trim().value == 'Chapter 1').to.equal(true);
+  });
+
+  it('match string', () => {
+    expect(safe.node('toc.chapter.title').match(/\d/).value == '1').to.equal(true);
+    expect(safe.node('toc.chapter.title').match('1').value == '1').to.equal(true);
+  });
+
+  it('replace string', () => {
+    expect(safe.node('toc.chapter.title').trim().replace(/\d/, '9').value == 'Chapter 9').to.equal(true);
+    expect(safe.node('toc.chapter.title').trim().replace('1', '9').value == 'Chapter 9').to.equal(true);
   });
 });
