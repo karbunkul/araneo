@@ -1,7 +1,9 @@
+[![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+
 # Araneo
 
 [![NPM](https://nodei.co/npm/araneo.png)](https://nodei.co/npm/araneo/)
-[![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+
 Helper for validation and getting value by path
 
 ## How to use
