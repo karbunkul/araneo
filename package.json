@@ -29,6 +29,10 @@
     "type": "git",
     "url": "git://github.com/karbunkul/araneo.git"
   },
+  "bugs": {
+    "url": "https://github.com/karbunkul/araneo/issues",
+    "email": "karbunkul@yourtask.ru"
+  },
   "standard": {
     "parser": "typescript-eslint-parser",
     "plugins": [
