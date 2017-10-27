@@ -1,7 +1,7 @@
 # Araneo
 
 [![NPM](https://nodei.co/npm/araneo.png)](https://nodei.co/npm/araneo/)
-
+[![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 Helper for validation and getting value by path
 
 ## How to use
@@ -34,10 +34,12 @@ Return araneo Node object.
 
 ## Node reference
 
-| Pipe method | Arguments | Description                    |
-|-------------|-----------|--------------------------------|
-| isString    |none       | check is node object is string |
-| isExist     |none       | check is node object is exist  |
-| isNumber    |none       | check is node object is number |
+| Pipe method | Arguments                  | Description                                 |
+|-------------|----------------------------|---------------------------------------------|
+| isString    |none                        | check is node object is string              |
+| trim        |none                        | trim spaces                                 |
+| isExist     |none                        | check is node object is exist               |
+| isNumber    |none                        | check is node object is number              |
+| required    |fields - required props     | check if all required props exist in object |
 
 © Alexander Pokhodyun (Karbunkul) 2017

@@ -1,28 +1,41 @@
 {
   "name": "araneo",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Helper for validation and getting value by path",
   "main": "dist/main.js",
   "scripts": {
     "start": "nodemon $NODE_DEBUG_OPTION --exec ts-node index.ts",
     "test": "mocha -r ts-node/register tests/**/*.spec.ts",
     "clean": "rimraf dist",
-    "compile": "npm run clean && tsc"
+    "compile": "npm run clean && tsc",
+    "lint": "standard *.ts"
   },
   "author": "Pokhodyun Alexander",
   "license": "MIT",
   "devDependencies": {
-    "@types/node": "^8.0.34",
     "@types/chai": "^4.0.4",
     "@types/mocha": "^2.2.43",
+    "@types/node": "^8.0.34",
+    "chai": "^4.1.2",
+    "eslint-plugin-typescript": "^0.8.0",
+    "mocha": "^3.5.3",
     "nodemon": "^1.12.1",
     "ts-node": "^3.3.0",
+    "tslint": "^5.8.0",
     "typescript": "^2.5.3",
-    "chai": "^4.1.2",
-    "mocha": "^3.5.3"
+    "typescript-eslint-parser": "^8.0.1"
   },
   "repository": {
     "type": "git",
     "url": "git://github.com/karbunkul/araneo.git"
+  },
+  "standard": {
+    "parser": "typescript-eslint-parser",
+    "plugins": [
+      "typescript"
+    ],
+    "ignore": [
+      "tests/**/*"
+    ]
   }
 }
