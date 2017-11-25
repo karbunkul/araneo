@@ -18,6 +18,8 @@ const obj = {
 describe('Araneo init', () => {
   const safe = araneo(obj);
 
+  console.log(safe.node('toc.depth').isString().error);
+
   it('should return instance of Araneo', () => {
     expect(safe instanceof Araneo).to.equal(true);
   });
@@ -47,12 +49,12 @@ describe('Araneo init', () => {
   });
 
   it('match string', () => {
-    expect(safe.node('toc.chapter.title').match(/\d/).value == '1').to.equal(true);
-    expect(safe.node('toc.chapter.title').match('1').value == '1').to.equal(true);
+    expect(safe.node( 'toc.chapter.title').match(undefined,/\d/).value == '1').to.equal(true);
+    expect(safe.node('toc.chapter.title').match(undefined,'1').value == '1').to.equal(true);
   });
 
   it('replace string', () => {
-    expect(safe.node('toc.chapter.title').trim().replace(/\d/, '9').value == 'Chapter 9').to.equal(true);
-    expect(safe.node('toc.chapter.title').trim().replace('1', '9').value == 'Chapter 9').to.equal(true);
+    expect(safe.node('toc.chapter.title').trim().replace(undefined,/\d/, '9').value == 'Chapter 9').to.equal(true);
+    expect(safe.node('toc.chapter.title').trim().replace(undefined,'1', '9').value == 'Chapter 9').to.equal(true);
   });
 });

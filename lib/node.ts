@@ -16,39 +16,40 @@ export default class Node {
     this._value = isObject(data) ? {...data} : data;
   }
 
-  public isString(): this {
+  public isString(params = {err: undefined}): this {
+    const {err = 'isString check failed'} = params;
     if (this.status) {
       if (!isString(this._value)) {
-        this.message('isString check failed');
+        this.message(err);
       }
     }
     return this
   }
 
-  public isNumber(): this {
+  public isNumber(err = undefined): this {
     if (this.status) {
       if (!isNumber(this._value)) {
-        this.message('isNumber check failed');
+        this.message(err || 'isNumber check failed');
       }
     }
     return this;
   }
 
-  public isExist(): this {
+  public isExist(err = undefined): this {
     if (this.status) {
       if (!(!!this._value)) {
-        this.message('isExist check failed');
+        this.message(err || 'isExist check failed');
       }
     }
     return this;
   }
 
-  public required(fields: string[]): this {
+  public required(err = undefined, fields: string[]): this {
     if (this.status) {
       if (!isObject(this.value)) {
         for (let prop of fields) {
           if (!this.value.hasOwnProperty(prop)) {
-            this.message(`Missing required prop ${prop}`);
+            this.message(err || `Missing required prop ${prop}`);
           }
         }
       }else {
@@ -58,29 +59,29 @@ export default class Node {
     return this;
   }
 
-  public trim(): this {
+  public trim(err = undefined): this {
     if (this.status) {
       if (isString(this.value)){
         this._value = this._value.trim();
       } else{
-        this.message('Value is not string');
+        this.message(err || 'Value is not string');
       }
     }
     return this;
   }
 
-  public match(regexp: string|RegExp) {
+  public match(err = undefined, regexp: string|RegExp) {
     if (this.status) {
       if (isString(this.value)){
         this._value = this._value.match(regexp);
       } else{
-        this.message('Value is not string');
+        this.message(err || 'Value is not string');
       }
     }
     return this;
   }
 
-  public replace(regexp: string|RegExp, value: string) {
+  public replace(err = undefined, regexp: string|RegExp, value: string) {
     if (this.status) {
       if (isString(this.value)){
         this._value = this._value.replace(regexp, value);

@@ -13,16 +13,16 @@
   "author": "Pokhodyun Alexander",
   "license": "MIT",
   "devDependencies": {
-    "@types/chai": "^4.0.4",
-    "@types/mocha": "^2.2.43",
-    "@types/node": "^8.0.34",
+    "@types/chai": "^4.0.5",
+    "@types/mocha": "^2.2.44",
+    "@types/node": "^8.0.53",
     "chai": "^4.1.2",
-    "eslint-plugin-typescript": "^0.8.0",
+    "eslint-plugin-typescript": "^0.8.1",
     "mocha": "^3.5.3",
     "nodemon": "^1.12.1",
     "ts-node": "^3.3.0",
     "tslint": "^5.8.0",
-    "typescript": "^2.5.3",
+    "typescript": "^2.6.1",
     "typescript-eslint-parser": "^8.0.1"
   },
   "repository": {
